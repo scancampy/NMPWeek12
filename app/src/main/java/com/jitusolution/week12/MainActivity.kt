@@ -42,18 +42,6 @@ class MainActivity : AppCompatActivity() {
             intent.type = ContactsContract.CommonDataKinds.Phone.CONTENT_TYPE
             startActivityForResult(intent, REQUEST_SELECT_CONTACT)
         }
-
-        val templates:ArrayList<String> =
-            arrayListOf("Let’s meet up!", "Have you worked on the project?",
-                "Movie time?", "Busy, do not disturb",
-                "Why you leave me?!", "Please pay me a visit. Urgent!",
-                "Please call me back")
-
-        var lm: LinearLayoutManager = LinearLayoutManager(this)
-        val recViewTemplate = findViewById<RecyclerView>(R.id.recViewTemplate)
-        recViewTemplate.layoutManager = lm
-        recViewTemplate.setHasFixedSize(true)
-        recViewTemplate.adapter = TemplateAdapter(templates, this)
     }
 
     override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
@@ -68,12 +56,12 @@ class MainActivity : AppCompatActivity() {
                     val hp = cursor.getString(0)
                     val txtHP = findViewById<EditText>(R.id.txtHP)
                     txtHP.setText(hp)
-                } else if(requestCode == REQUEST_SELECT_TEMPLATE) {
-                    val message =
-                        data?.getStringExtra(MessageTemplateActivity.TEMPLATE_MESSAGE)
-                    val txtMessage = findViewById<EditText>(R.id.txtMessage)
-                    txtMessage.setText(message)
                 }
+            } else if(requestCode == REQUEST_SELECT_TEMPLATE) {
+                val message =
+                    data?.getStringExtra(MessageTemplateActivity.TEMPLATE_MESSAGE)
+                val txtMessage = findViewById<EditText>(R.id.txtMessage)
+                txtMessage.setText(message)
             }
         }
     }
