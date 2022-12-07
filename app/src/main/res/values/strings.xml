@@ -1,3 +1,9 @@
 <resources>
     <string name="app_name">Week12</string>
+    <string name="phone_number">Phone Number</string>
+    <string name="message">Message</string>
+    <string name="send">Send</string>
+    <string name="pick_template">Pick Template</string>
+    <string name="template">Template</string>
+    <string name="pick">Pick</string>
 </resources>
